@@ -4,7 +4,3 @@
         return n;
     }
 }
-const test1 = getDoubleN(3);
-console.log(test1());
-console.log(test1());
-console.log(test1());

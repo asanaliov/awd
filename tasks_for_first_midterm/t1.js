@@ -7,24 +7,19 @@
         tags.get(tag).push(value)
     }
     function clearTag(tag){
-        tags.delete(tag);
+        if (tags.has(tag))
+            tags.delete(tag);
     }
+
     function report(tag){
-        let r;
-        if(tags.has(tag)){
-            r = formatFn(tag, tags.get(tag));
-        }else{
-            r = null;
+        let r = null;
+        if (tags.has(tag)){
+            r = formatFn(tag, tags.get(tag))
         }
-        return r
+        return r;
     }
     function reportAll(){
-        const results = []
-        for (const tag of tags.keys()){
-            results.push(formatFn(tag, tags.get(tag)))
-        }
-        return results.sort()
-
+        return Array.from(tags.keys()).sort().map(tag => formatFn(tag, tags.get(tag)))
     }
     return {
         add, clearTag, report, reportAll
